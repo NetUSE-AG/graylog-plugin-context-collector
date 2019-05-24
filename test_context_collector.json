@@ -1,0 +1,38 @@
+[
+	{
+		"type":"collection",
+		"name":"test_simple",
+		"timeout":10,
+		"key_fields":["test_simple_key"],
+		"drop_incomplete":false,
+		"enabled":true,
+	        "value_fields": ["test_case","test_simple_a", "test_simple_b"]
+	},
+	{
+		"type":"collection",
+		"name":"test_key_int",
+		"timeout":10,
+		"key_fields":["test_key_int_key"],
+		"drop_incomplete":false,
+		"enabled":true,
+	        "value_fields": ["test_case","test_key_int_a", "test_key_int_b"]
+	},
+	{
+		"type":"collection",
+		"name":"test_collect_date",
+		"timeout":10,
+		"key_fields":["test_collect_date_key"],
+		"drop_incomplete":false,
+		"enabled":true,
+	        "value_fields": ["test_case","test_collect_date_a", "test_collect_date_b"]
+	},
+	{
+		"type":"collection",
+		"name":"test_key_multi",
+		"timeout":10,
+		"key_fields":["test_key_multi_key1", "test_key_multi_key2"],
+		"drop_incomplete":false,
+		"enabled":true,
+	        "value_fields": ["test_case","test_be_collected","test_key_multi_a", "test_key_multi_b"]
+	}
+]
