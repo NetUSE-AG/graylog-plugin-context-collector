@@ -20,6 +20,7 @@ package de.netuse.graylog.context_collector.context;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.assistedinject.Assisted;
 import org.graylog2.plugin.Message;
+import org.graylog2.plugin.MessageFactory;
 import org.graylog2.plugin.configuration.Configuration;
 import org.graylog2.plugin.configuration.ConfigurationRequest;
 import org.graylog2.plugin.inputs.annotations.Codec;
@@ -32,9 +33,10 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.inject.Inject;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.inject.Inject;
 import java.io.IOException;
 
 /*
@@ -44,11 +46,13 @@ import java.io.IOException;
 public class ContextCollectorCodec extends AbstractCodec {
     private static final Logger LOG = LoggerFactory.getLogger(ContextCollectorCodec.class);
     private final ObjectMapper objectMapper;
+    private final MessageFactory messageFactory;
 
     @Inject
-    public ContextCollectorCodec(@Assisted Configuration configuration, ObjectMapper objectMapper) {
+    public ContextCollectorCodec(@Assisted Configuration configuration, ObjectMapper objectMapper, MessageFactory messageFactory) {
         super(configuration);
         this.objectMapper = objectMapper;
+	this.messageFactory = messageFactory;
     }
 
     @Nullable
@@ -61,7 +65,7 @@ public class ContextCollectorCodec extends AbstractCodec {
         }
         try {
             final CollectionItem item = objectMapper.readValue(rawMessage.getPayload(), CollectionItem.class);
-            final Message message = new Message("Collected log", "graylog", DateTime.now());
+            final Message message = this.messageFactory.createMessage("Collected log", "graylog", DateTime.now());
             message.addFields(item.collected_fields());
             message.addField("log.logger","ContextCollector");
             message.addField("context_collector_timeout", new DateTime(item.invalid_after()*1000));

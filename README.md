@@ -9,6 +9,13 @@ Common scenarios are the unification of multi-line messages such as E-Mail-Serve
 ## Installation 
 Please refer to https://docs.graylog.org/docs/plugins#installing-and-loading-plugins for the latest instructions for loading a plugin into Graylog.
 
+With graylog 6.0 and greater the Context Collector plugin class needs to be allowed within the server configuration:
+```
+safe_classes = org.graylog.,org.graylog2.,de.netuse.graylog.context_collector.config.PluginConfigurationV2
+```
+For more information on this see https://github.com/Graylog2/graylog2-server/pull/18180 
+
+
 ### Initial Configuration
 
 For the Context Collector to work the input must be created and one output must be created and attached to at least one stream of interest.

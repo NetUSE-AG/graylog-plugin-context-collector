@@ -26,7 +26,7 @@ import org.graylog2.plugin.configuration.Configuration;
 import org.graylog2.plugin.inputs.MessageInput;
 import org.graylog2.plugin.inputs.annotations.FactoryClass;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 
 /*

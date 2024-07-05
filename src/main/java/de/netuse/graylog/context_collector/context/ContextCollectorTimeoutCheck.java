@@ -34,7 +34,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.antkorwin.xsync.XSync;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.Instant;

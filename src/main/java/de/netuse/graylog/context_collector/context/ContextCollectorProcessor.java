@@ -167,7 +167,7 @@ public class ContextCollectorProcessor {
                 BasicDBObject setQuery = new BasicDBObject();
                 setQuery.append("$set", updateFields);
                 WriteResult<CollectionItem, String> result = set_collection.update(new BasicDBObject("_id", item.id()), setQuery, false, false);
-                if (!result.getWriteResult().wasAcknowledged()) {
+                if (!result.wasAcknowledged()) {
                     LOG.error("Update of CollectionItem was not acknowledged.");
                 }
             }
@@ -196,7 +196,7 @@ public class ContextCollectorProcessor {
                 false);
 
         WriteResult<CollectionItem, String> result = set_collection.update(DBQuery.is("_id", collection_id), item, true, false);
-        if (!result.getWriteResult().wasAcknowledged()) {
+        if (!result.wasAcknowledged()) {
             LOG.error("Creation of CollectionItem was not acknowledged.");
         }
         return item;
