@@ -32,6 +32,7 @@ const manifest = new PluginManifest(packageJson, {
         {
           component: NetuseContextCollectorConfig,
           configType: 'de.netuse.graylog.context_collector.config.PluginConfigurationV2',
+          displayName: 'Context Collector',
         },
       ]
 });

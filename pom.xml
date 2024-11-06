@@ -13,7 +13,7 @@
     </parent>
 
     <artifactId>graylog-plugin-netuse-context-collector</artifactId>
-    <version>2.2.5</version>
+    <version>2.3.0</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
